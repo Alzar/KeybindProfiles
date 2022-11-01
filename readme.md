@@ -6,8 +6,8 @@ Use of the addon is simple, create your profile and then modify your keybinds. F
 
 For loading profiles, there's several ways to do it.
 1. Through UI, select the profile you'd like to load (Or additionally setup profiles to be loaded per-spec)
-2. Through slash command; /kbp load \<profilename\>
-3. Through code; KeybindProfiles:Load(\<profilename\>)
+2. Through slash command; `/kbp load \<profilename\>`
+3. Through code; `KeybindProfiles:Load(\<profilename\>)`
 
 NOTE: By default, the behavior to save profiles anytime keybinds are saved is disabled which means you would need to manually save your profile in the addon config (/kbp config). You can enable autosaving, there is no issues with it, but if you use lower-end specs you may experience a small bit of lag.
 
