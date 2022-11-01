@@ -1,5 +1,5 @@
 ## Title: |cffFF0000Keyind|r |cffffffffProfiles|r |cfd9b9b9bWrath|r
-## Version: v1.0.0-alpha
+## Version: v1.0.0
 ## Author: Alzar
 ## Interface: 30400
 ## X-Interface: 30400

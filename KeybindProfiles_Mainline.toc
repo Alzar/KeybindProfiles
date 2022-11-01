@@ -1,5 +1,5 @@
 ## Title: |cffFF0000Keyind|r |cffffffffProfiles|r
-## Version: v1.0.0-alpha
+## Version: v1.0.0
 ## Author: Alzar
 ## Interface: 100000
 ## X-Interface: 100000
