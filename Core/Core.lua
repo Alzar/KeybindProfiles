@@ -1,3 +1,4 @@
+local _saveBlock = false
 local profileDefaults = {
 	global = {
 		minimap = {
@@ -9,6 +10,18 @@ local profileDefaults = {
 		keybinds = {},
 	},
 }
+
+local function _unbindCommand(command)
+	-- Unbind all keys for this command
+	local current_keys = { GetBindingKey(command) } -- Get keys for this command
+	local current_keys_table = {}
+	for i = 1, #current_keys do
+		current_keys_table[current_keys[i]] = "1"
+	end
+	for i, v in pairs(current_keys_table) do
+		SetBinding(i) -- Unbind!
+	end
+end
 
 function KeybindProfiles:OnInitialize()
 	self.DB = LibStub("AceDB-3.0"):New("BindProfilesDB_Global", profileDefaults, "Default")
@@ -44,6 +57,7 @@ function KeybindProfiles:OnInitialize()
 	self.minmapBtn = LibStub("LibDBIcon-1.0")
 	self.minmapBtn:Register("KeybindProfiles", KeybindProfiles.MMB, self.DB.global.minimap)
 
+	self.DB.RegisterCallback(KeybindProfiles, "OnNewProfile", "ResetProfile")
 	self.DB.RegisterCallback(KeybindProfiles, "OnProfileChanged", "SetKeybinds")
 	self.DB.RegisterCallback(KeybindProfiles, "OnProfileCopied", "SetKeybinds")
 	self.DB.RegisterCallback(KeybindProfiles, "OnProfileReset", "ResetProfile")
@@ -51,6 +65,7 @@ function KeybindProfiles:OnInitialize()
 
 	-- Add hook to SaveBindings to be able to autosave if features is enabled
 	hooksecurefunc("SaveBindings", function()
+		if _saveBlock then return end
 		if KeybindProfiles.DB.global.Autosave then
 			KeybindProfiles:SaveProfile(true)
 		end
@@ -126,6 +141,11 @@ end
 function KeybindProfiles:SetKeybinds()
 	if not InCombatLockdown() then
 		if self.DB.profile.keybinds ~= nil then
+			_saveBlock = true
+			for i = 1, GetNumBindings() do
+				local command, _ = GetBinding(i)
+				_unbindCommand(command)
+			end
 			for command, _ in pairs(self.DB.profile.keybinds) do
 				local currKbs = { GetBindingKey(command) }
 				local currKbsTbl = {}
@@ -164,6 +184,7 @@ function KeybindProfiles:SetKeybinds()
 					end
 				end
 			end
+			_saveBlock = false
 
 			SaveBindings(2)
 		else

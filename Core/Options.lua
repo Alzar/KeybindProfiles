@@ -10,9 +10,9 @@ function KeybindProfiles:GetOptions()
 				set = function(_, val)
 					self.DB.global.minimap.hide = val
 					if val then
-						self.minmapBtn:Show("KeybindProfiles")
-					else
 						self.minmapBtn:Hide("KeybindProfiles")
+					else
+						self.minmapBtn:Show("KeybindProfiles")
 					end
 				end,
 				get = function()
