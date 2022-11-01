@@ -1,0 +1,12 @@
+## Title: |cffFF0000Keyind|r |cffffffffProfiles|r
+## Version: v1.0.0-alpha
+## Author: Alzar
+## Interface: 100000
+## X-Interface: 100000
+## SavedVariables: BindProfilesDB_Global
+## Notes: Allows creation of keybind profiles allowing quick keybind changing
+
+embeds.xml
+locales.xml
+KeybindProfiles.lua
+KeybindProfiles.xml
