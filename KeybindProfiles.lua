@@ -7,6 +7,6 @@ KeybindProfiles.Author = GetAddOnMetadata("KeybindProfiles", "Author")
 KeybindProfiles.Version = GetAddOnMetadata("KeybindProfiles", "Version")
 KeybindProfiles.Locale = LibStub("AceLocale-3.0"):GetLocale("KeybindProfiles")
 KeybindProfiles.GUI = LibStub("AceGUI-3.0")
-KeybindProfiles.IsClassic = GetAddOnMetadata("KeybindProfiles", "Interface") ~= CLASSIC_VERSION
+KeybindProfiles.IsClassic = GetAddOnMetadata("KeybindProfiles", "Interface") == CLASSIC_VERSION
 
 KeybindProfiles:SetDefaultModuleState(false)
